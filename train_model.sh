@@ -2,7 +2,7 @@
 
 BASE_PATH=$(pwd)/subsets
 
-for genre in */ do convert_dir_to_note_sequences \
+for genre in */ ; do convert_dir_to_note_sequences \
   --input_dir=$BASE_PATH/$genre \
   --output_file=/tmp/${genre%/}_notesequences.tfrecord \
   --recursive;
@@ -19,7 +19,10 @@ done
 echo "INFO: Melody database creation completed."
 
 for genre in */ ;
-do if [[ $genre == *examples* ]]; then continue; fi; melody_rnn_train \
+do
+  if [[ $genre == *examples* ]]; then continue;
+fi;
+melody_rnn_train \
   --config="attention_rnn" \
   --run_dir=/tmp/melody_rnn/logdir/run1/${genre} \
   --sequence_example_file=$(pwd)/sequence_examples/${genre%/}_training_melodies.tfrecord \
