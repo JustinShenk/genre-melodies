@@ -56,7 +56,7 @@ if not os.path.exists("genres.p"):
 else:
     # Load genres meta-data
     genres = pickle.load(open("genres.p", "rb"))
-
+    print("INFO: found genre.p")
 # Get the most common genres
 flattened_list = [item for sublist in list(
     genres.values()) for item in sublist]
@@ -86,3 +86,4 @@ for genre, artists in genre_data.items():
                 os.getcwd(), 'subsets', genre, artist))
     except Exception as e:
         print(e)
+    print("INFO: Genre-specific folders created.")
