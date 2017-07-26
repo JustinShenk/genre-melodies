@@ -30,7 +30,7 @@ if not os.path.exists("genres.p"):
         OUTFILE_PATH = 'clean_midi.tar'
         with open(OUTFILE_PATH, 'wb') as outfile:
             outfile.write(decompressedFile.read())
-        tar = tarfile.open('clean_midi')
+        tar = tarfile.open(OUTFILE_PATH)
         tar.extractall()
         tar.close()
     # Get artists from folder names
