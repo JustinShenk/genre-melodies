@@ -1,7 +1,6 @@
 spotipy
 numpy
 matplotlib
-pickle
 pandas
 seaborn
 scikit-learn
