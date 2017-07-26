@@ -23,7 +23,7 @@ if not os.path.exists("genres.p"):
         import tarfile
         FILE_URL = 'http://hog.ee.columbia.edu/craffel/lmd/clean_midi.tar.gz'
         response = urllib.request.urlopen(FILE_URL)
-        compressed_file = StringIO.StringIO()
+        compressedFile = StringIO.StringIO()
         compressedFile.write(response.read())
         compressedFile.seek(0)
         decompressedFile = gzip.GzipFile(fileobj=compressedFile, mode='rb')
