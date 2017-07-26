@@ -4,12 +4,7 @@ import spotipy
 import pickle
 import pandas as pd
 import numpy as np
-%matplotlib notebook
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-from sklearn.manifold import TSNE
-from sklearn.decomposition import PCA
 from collections import Counter
 
 if not os.path.exists("genres.p"):
