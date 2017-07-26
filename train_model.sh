@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-BASE_PATH=$(pwd)/subsets
+cd subsets
+BASE_PATH=$(pwd)
 
 for genre in */ ; do convert_dir_to_note_sequences \
-  --input_dir=$BASE_PATH/$genre \
+  --input_dir=$genre \
   --output_file=/tmp/${genre%/}_notesequences.tfrecord \
   --recursive;
 done
@@ -12,8 +13,7 @@ for genre in */ ; do melody_rnn_create_dataset \
   --config=attention_rnn \
   --input=/tmp/${genre%/}_notesequences.tfrecord \
   --output_dir="sequence_examples/${genre}"
-  --eval_ratio=0.10;
-  echo "INFO: ${genre%/} database created."
+  --eval_ratio=0.10 && echo "INFO: ${genre%/} database created."
 done
 
 echo "INFO: Melody database creation completed."
