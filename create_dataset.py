@@ -13,7 +13,7 @@ from collections import Counter
 if not os.path.exists("genres.p"):
     # Login to Spotify and get your OAuth token:
     # https://developer.spotify.com/web-api/search-item/
-    AUTH = "BQBHlFpkjjlfDwbyQ7v0F1p_cejpmYARG6KDclVlP3HZyb4MG3_Mc40tE__HsuFXGQvYRvOi1Mbfx-_FoA9DVXCpNupL0X8XFFbL1XghQCf6mH_yXc82GqWAtrLjUtc-eWIDBpci1M0"
+    AUTH = "BQD4KKg1opql7Vi8_34OjujPQRhut-beyfo4jcKdPZA7BwPd9MtMx7vSFVzd3K9J_v4LElaZ6B8dCRV5pp0caAusHhLbLAxB1cYuNlhA-9tWLpuheMrlEIQE-ey-q8m5Nevkh83NV6c"
 
     if not os.path.exists('clean_midi'):
         # Download the 'Clean MIDI' dataset from http://colinraffel.com/projects/lmd/
