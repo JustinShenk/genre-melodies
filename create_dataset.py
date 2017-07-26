@@ -29,7 +29,7 @@ if not os.path.exists("genres.p"):
         decompressedFile = gzip.GzipFile(fileobj=compressedFile, mode='rb')
         OUTFILE_PATH = 'clean_midi.tar'
         with open(OUTFILE_PATH, 'wb') as outfile:
-            outfile.write(decompressed_file.read())
+            outfile.write(decompressedFile.read())
         tar = tarfile.open('clean_midi')
         tar.extractall()
         tar.close()
