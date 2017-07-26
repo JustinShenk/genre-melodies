@@ -1,9 +1,12 @@
+from __future__ import print_function
+
 import os
 import shutil
 import spotipy
 import pickle
 import pandas as pd
 import numpy as np
+
 
 from collections import Counter
 
@@ -42,7 +45,7 @@ if not os.path.exists("genres.p"):
             print(artist, e)
 
     # Save to pickle file
-    pickle.dump(genres, open("genres.p", "wb"))
+    pickle.dump(genres, open("genres.p", "wb"), protocol=2)
 else:
     # Load genres meta-data
     genres = pickle.load(open("genres.p", "rb"))
