@@ -17,7 +17,7 @@ if not os.path.exists("genres.p"):
 
     if not os.path.exists('clean_midi'):
         # Download the 'Clean MIDI' dataset from http://colinraffel.com/projects/lmd/
-        import urllib.request
+        from six.moves import urllib
         import io
         import gzip
         FILE_URL = 'http://hog.ee.columbia.edu/craffel/lmd/clean_midi.tar.gz'
