@@ -18,15 +18,21 @@ if not os.path.exists("genres.p"):
     if not os.path.exists('clean_midi'):
         # Download the 'Clean MIDI' dataset from http://colinraffel.com/projects/lmd/
         from six.moves import urllib
-        import io
+        import StringIO
         import gzip
+        import tarfile
         FILE_URL = 'http://hog.ee.columbia.edu/craffel/lmd/clean_midi.tar.gz'
         response = urllib.request.urlopen(FILE_URL)
-        compressed_file = io.BytesIO(response.read())
-        decompressed_file = gzip.GzipFile(fileobj=compressed_file)
-
+        compressed_file = StringIO.StringIO()
+        compressedFile.write(response.read())
+        compressedFile.seek(0)
+        decompressedFile = gzip.GzipFile(fileobj=compressedFile, mode='rb')
+        OUTFILE_PATH = 'clean_midi.tar'
         with open(OUTFILE_PATH, 'wb') as outfile:
             outfile.write(decompressed_file.read())
+        tar = tarfile.open('clean_midi')
+        tar.extractall()
+        tar.close()
     # Get artists from folder names
     artists = [item for item in os.listdir(
         'clean_midi') if not item.startswith('.')]
@@ -46,6 +52,7 @@ if not os.path.exists("genres.p"):
 
     # Save to pickle file
     pickle.dump(genres, open("genres.p", "wb"), protocol=2)
+    print("INFO: genre.p file created")
 else:
     # Load genres meta-data
     genres = pickle.load(open("genres.p", "rb"))
