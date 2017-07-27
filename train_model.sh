@@ -42,6 +42,7 @@ train_models() {
     --hparams="batch_size=64,rnn_layer_sizes=[64,64]" \
     --num_training_steps=2000 && echo "INFO: ${genre%/} model trained."
   done
+  echo "INFO: Training complete"
 }
 
 generate_melodies() {
