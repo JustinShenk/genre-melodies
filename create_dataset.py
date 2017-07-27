@@ -30,6 +30,7 @@ if not os.path.exists('clean_midi'):
     tar = tarfile.open(OUTFILE_PATH)
     tar.extractall()
     tar.close()
+    os.remove(OUTFILE_PATH)
     print("INFO: Extracted data")
 else:
     print("INFO: Found `clean_midi` directory")
