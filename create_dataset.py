@@ -72,13 +72,12 @@ def get_artists(genre):
     return artists
 
 
-# Get artist with genres 'soft rock' and 'disco'
+# Get artist with genres in `genre_list`
 genre_data = {}
-metal = get_artists('metal')
-classical = get_artists('classical')
-
-genre_data['metal'] = metal
-genre_data['classical'] = classical
+genre_list = ['classical', 'metal', 'jazz', 'funk', 'r&b', 'folk',
+              'hip hop', 'punk', 'latin', 'big band']
+for g in genre_list:
+    genre_data[g] = get_artists(g)
 
 # Copy artists to a genre-specific folder
 for genre, artists in genre_data.items():
@@ -88,4 +87,4 @@ for genre, artists in genre_data.items():
                 os.getcwd(), 'subsets', genre, artist))
     except Exception as e:
         print(e)
-    print("INFO: Genre-specific folders created.")
+    print("INFO: {} folder created.".format(genre))
