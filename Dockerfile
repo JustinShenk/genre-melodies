@@ -1,6 +1,8 @@
+### Begin original Magenta dockerfile ###
+
 FROM tensorflow/tensorflow:1.1.0-devel
 
-MAINTAINER Curtis Hawthorne <fjord@google.com>
+MAINTAINER Justin Shenk <shenk.justin@gmail.com>
 
 # Download and build Magenta.
 
@@ -22,13 +24,11 @@ RUN bazel build magenta/tools/pip:build_pip_package && \
 
 # Add pre-trained models (specific only)
 ADD http://download.magenta.tensorflow.org/models/attention_rnn.mag /magenta-models/
+### End Magenta dockerfile ###
 
-# /magenta-data should be mapped to the host on startup.
-RUN mkdir /magenta-data
-WORKDIR /magenta-data
-
-RUN cd ~ && \
-  git clone https://github.com/JustinShenk/genre-melodies.git && \
+# /genre-melodies should be mapped to the host on startup.
+WORKDIR /
+RUN git clone https://github.com/JustinShenk/genre-melodies.git && \
   cd genre-melodies && \
   git checkout jazz && \
   pip install -r requirements.txt && \
@@ -36,5 +36,5 @@ RUN cd ~ && \
   bash train_model.sh
 
 # Start an interactive shell
-
+WORKDIR /genre-melodies
 CMD ["bash"]
