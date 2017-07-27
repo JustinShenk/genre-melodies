@@ -51,13 +51,14 @@ generate_melodies() {
     if [[ $genre == *examples* ]];
     then continue
     fi
+    HPARAMS="\'batch_size=64,rnn_layer_sizes=[64,64]\'"
     melody_rnn_generate \
     --config=attention_rnn \
     --run_dir=/tmp/melody_rnn/logdir/run1/${genre} \
     --output_dir=/tmp/melody_rnn/generated/${genre} \
     --num_outputs=10 \
     --num_steps=128 \
-    --hparams="batch_size=64,rnn_layer_sizes=[64,64]" \
+    --hparams=${HPARAMS} \
     --primer_melody="[60]" && echo "INFO: ${genre%/} melodies generated."
   done
 }
