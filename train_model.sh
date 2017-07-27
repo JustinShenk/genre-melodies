@@ -39,7 +39,7 @@ train_models() {
     --config=attention_rnn \
     --run_dir=/tmp/melody_rnn/logdir/run1/${genre} \
     --sequence_example_file=$(pwd)/sequence_examples/${genre%/}/training_melodies.tfrecord \
-    --hparams="batch_size=64,rnn_layer_sizes=[64,64]" \
+    --hparams="{'batch_size':64,'rnn_layer_sizes':[64,64]}" \
     --num_training_steps=10 && echo "INFO: ${genre%/} model trained."
   done
   echo "INFO: Training complete"
@@ -51,14 +51,13 @@ generate_melodies() {
     if [[ $genre == *examples* ]];
     then continue
     fi
-    HPARAMS="\'batch_size=64,rnn_layer_sizes=[64,64]\'"
     melody_rnn_generate \
     --config=attention_rnn \
     --run_dir=/tmp/melody_rnn/logdir/run1/${genre} \
     --output_dir=/tmp/melody_rnn/generated/${genre} \
     --num_outputs=10 \
     --num_steps=128 \
-    --hparams=${HPARAMS} \
+    --hparams="{'batch_size':64,'rnn_layer_sizes':[64,64]}" \
     --primer_melody="[60]" && echo "INFO: ${genre%/} melodies generated."
   done
 }
