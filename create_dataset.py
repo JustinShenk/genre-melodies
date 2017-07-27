@@ -10,7 +10,7 @@ import numpy as np
 
 from collections import Counter
 
-if not os.path.exists("genres.p"):
+if not os.path.exists('genres.p'):
     # Login to Spotify and get your OAuth token:
     # https://developer.spotify.com/web-api/search-item/
     AUTH = "BQD4KKg1opql7Vi8_34OjujPQRhut-beyfo4jcKdPZA7BwPd9MtMx7vSFVzd3K9J_v4LElaZ6B8dCRV5pp0caAusHhLbLAxB1cYuNlhA-9tWLpuheMrlEIQE-ey-q8m5Nevkh83NV6c"
@@ -23,6 +23,7 @@ if not os.path.exists("genres.p"):
         import tarfile
         FILE_URL = 'http://hog.ee.columbia.edu/craffel/lmd/clean_midi.tar.gz'
         response = urllib.request.urlopen(FILE_URL)
+        print("INFO: Downloaded {}".format(FILE_URL))
         compressedFile = StringIO.StringIO()
         compressedFile.write(response.read())
         compressedFile.seek(0)
@@ -46,16 +47,17 @@ if not os.path.exists("genres.p"):
             genre_list = items[0]['genres'] if len(items) else items['genres']
             genres[artist] = genre_list
             if i < 5:
-                print(artist, genre_list[:5])
+                print("INFO: Preview {}/5".format(i + 1),
+                      artist, genre_list[:5])
         except Exception as e:
-            print(artist, e)
+            print("INFO: ", artist, "not included: ", e)
 
     # Save to pickle file
-    pickle.dump(genres, open("genres.p", "wb"), protocol=2)
+    pickle.dump(genres, open('genres.p', 'wb'), protocol=2)
     print("INFO: genre.p file created")
 else:
     # Load genres meta-data
-    genres = pickle.load(open("genres.p", "rb"))
+    genres = pickle.load(open('genres.p', 'rb'))
     print("INFO: found genre.p")
 # Get the most common genres
 flattened_list = [item for sublist in list(
