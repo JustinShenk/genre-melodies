@@ -2,15 +2,13 @@
 
 ## Getting Started
 
-#### Install Magenta ####
-
 This docker installation of a minimal jazz melody generation implementation which runs all of the scripts and begins generating:
 
 ```sh
 docker run -it -p 6006:6006 -v /tmp/magenta:/genre-melodies justinshenk/melodic
 ```
 
-Manual installation:
+Manual Magenta installation:
 ```sh
 sudo apt-get update -y
 sudo apt-get install libasound2-dev libasound-dev libjack-dev git -y
