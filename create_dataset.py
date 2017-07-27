@@ -37,7 +37,7 @@ else:
 if not os.path.exists('genres.p'):
     # Login to Spotify and get your OAuth token:
     # https://developer.spotify.com/web-api/search-item/
-    AUTH = "ENTER-YOUR-AUTH-KEY"
+    AUTH = "ENTER-MY-AUTH-KEY"
 
     # Get artists from folder names
     artists = [item for item in os.listdir(
@@ -88,8 +88,9 @@ for g in genre_list:
 for genre, artists in genre_data.items():
     try:
         for artist in artists:
+            _genre = genre.replace(' ', '_').replace('&', 'n')
             shutil.copytree(os.path.join(MIDI_DIR, artist), os.path.join(
-                os.getcwd(), 'subsets', genre.replace(' ', '_'), artist))
+                os.getcwd(), 'subsets', _genre, artist))
     except Exception as e:
         print(e)
     print("INFO: {} folder created.".format(genre))
