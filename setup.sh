@@ -1,4 +1,6 @@
-sudo apt-get update -y && sudo apt-get upgrade -y 
+#!/usr/bin/env bash
+
+sudo apt-get update -y && sudo apt-get upgrade -y
 
 sudo apt-get install libasound2-dev libasound-dev libjack-dev -y
 
