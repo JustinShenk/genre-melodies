@@ -15,7 +15,7 @@ sudo apt-get install libasound2-dev libasound-dev libjack-dev git -y
 curl https://raw.githubusercontent.com/tensorflow/magenta/master/magenta/tools/magenta-install.sh > /tmp/magenta-install.sh &&
 bash /tmp/magenta-install.sh
 ```
-using Conda (NOTE:  Magenta currently supports version 2 of Python):
+or using Conda (NOTE:  Magenta currently supports version 2 of Python):
 
 ```sh
 conda create -n magenta python=2.7 jupyter
