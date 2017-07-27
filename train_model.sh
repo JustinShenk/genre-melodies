@@ -40,7 +40,7 @@ train_models() {
     --run_dir=/tmp/melody_rnn/logdir/run1/${genre} \
     --sequence_example_file=$(pwd)/sequence_examples/${genre%/}/training_melodies.tfrecord \
     --hparams="batch_size=64,rnn_layer_sizes=[64,64]" \
-    --num_training_steps=2000 && echo "INFO: ${genre%/} model trained."
+    --num_training_steps=10 && echo "INFO: ${genre%/} model trained."
   done
   echo "INFO: Training complete"
 }
