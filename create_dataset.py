@@ -80,7 +80,8 @@ def get_artists(genre):
 
 # Get artists with genres in `genre_list`
 genre_data = {}
-genre_list = ['jazz']
+genre_list = ['classical', 'metal', 'jazz', 'funk', 'r&b', 'folk',
+              'hip hop', 'punk', 'latin', 'big band']
 for g in genre_list:
     genre_data[g] = get_artists(g)
 
