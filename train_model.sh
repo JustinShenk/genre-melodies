@@ -62,8 +62,8 @@ generate_melodies() {
   done
 }
 
-convert && \ echo "INFO: Files converted to NoteSequences." && \
-create_database && \ echo "INFO: Database created." && \
+convert && echo "INFO: Files converted to NoteSequences." && \
+create_database && echo "INFO: Database created." && \
 train_models && echo "INFO: Melody data models trained." && \
 generate_melodies && echo "INFO: Melodies generated." && \
 echo "Completed."
