@@ -48,7 +48,7 @@ Visualizations:
 
 Tensorboard graph of trained network:
 
-[<img src="/images/magenta_graph.png" alt="Tensorboard Graph" width="60%"/>](/images/magenta._graph.png])
+[<img src="/images/magenta_graph.png" alt="Tensorboard Graph" width="60%"/>](/blob/master/images/magenta_graph.png)
 
 ## Postprocessing
 
