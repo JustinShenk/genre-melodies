@@ -12,9 +12,9 @@ curl https://raw.githubusercontent.com/tensorflow/magenta/master/magenta/tools/m
 bash /tmp/magenta-install.sh
 
 echo "Open a new terminal window so the environmental variable changes take effect and enter:"
-echo "  echo 'source activate magenta && pip install tensorflow-gpu &&
+echo "  source activate magenta && pip install tensorflow-gpu &&
 git clone https://github.com/JustinShenk/genre-melodies.git &&
 cd genre-melodies &&
 pip install -r requirements.txt &&
 python create_dataset.py &&
-sh train_model.sh'"
+sh train_model.sh"
