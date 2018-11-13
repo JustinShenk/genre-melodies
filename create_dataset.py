@@ -8,7 +8,6 @@ import pickle
 import pandas as pd
 import numpy as np
 
-
 from collections import Counter
 
 if not os.path.exists('clean_midi'):
@@ -41,8 +40,9 @@ if not os.path.exists('genres.p'):
     AUTH = "ENTER-MY-AUTH-KEY"
 
     # Get artists from folder names
-    artists = [item for item in os.listdir(
-        'clean_midi') if not item.startswith('.')]
+    artists = [
+        item for item in os.listdir('clean_midi') if not item.startswith('.')
+    ]
 
     sp = spotipy.Spotify(auth=AUTH)
     genres = {}
@@ -53,8 +53,8 @@ if not os.path.exists('genres.p'):
             genre_list = items[0]['genres'] if len(items) else items['genres']
             genres[artist] = genre_list
             if i < 5:
-                print("INFO: Preview {}/5".format(i + 1),
-                      artist, genre_list[:5])
+                print("INFO: Preview {}/5".format(i + 1), artist,
+                      genre_list[:5])
         except Exception as e:
             print("INFO: ", artist, "not included: ", e)
 
@@ -66,8 +66,9 @@ else:
     genres = pickle.load(open('genres.p', 'rb'))
     print("INFO: found genre.p")
 # Get the most common genres
-flattened_list = [item for sublist in list(
-    genres.values()) for item in sublist]
+flattened_list = [
+    item for sublist in list(genres.values()) for item in sublist
+]
 
 MIDI_DIR = os.path.join(os.getcwd(), 'clean_midi')
 
@@ -80,8 +81,10 @@ def get_artists(genre):
 
 # Get artists with genres in `genre_list`
 genre_data = {}
-genre_list = ['classical', 'metal', 'jazz', 'funk', 'r&b', 'folk',
-              'hip hop', 'punk', 'latin', 'big band']
+genre_list = [
+    'classical', 'metal', 'jazz', 'funk', 'r&b', 'folk', 'hip hop', 'punk',
+    'latin', 'big band'
+]
 for g in genre_list:
     genre_data[g] = get_artists(g)
 
@@ -90,8 +93,9 @@ for genre, artists in genre_data.items():
     try:
         for artist in artists:
             _genre = genre.replace(' ', '_').replace('&', 'n')
-            shutil.copytree(os.path.join(MIDI_DIR, artist), os.path.join(
-                os.getcwd(), 'subsets', _genre, artist))
+            shutil.copytree(
+                os.path.join(MIDI_DIR, artist),
+                os.path.join(os.getcwd(), 'subsets', _genre, artist))
     except Exception as e:
         print(e)
     print("INFO: {} folder created.".format(genre))
